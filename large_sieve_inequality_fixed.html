@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Large Sieve Inequality</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Large Sieve Inequality</h1>
+</header>
+<p><strong>The large sieve inequality</strong></p>
+<p>Let <span class="math inline">\(0&lt;\delta \le \tfrac12\)</span>. We
+say that <span class="math inline">\(x_1,\ldots,x_R\)</span> are <span
+class="math inline">\(\delta\)</span> well-spaced if <span
+class="math display">\[\min_{\substack{r\ne s}} \,\lVert
+x_r-x_s\rVert&gt;\delta,\]</span> where <span
+class="math inline">\(\lVert u\rVert=\min_{n\in\mathbb{Z}}
+|u-n|\)</span>. Observe that <span class="math inline">\(R\le
+\delta^{-1}\)</span>. Now let <span
+class="math display">\[S(x)=\sum_{M&lt;n\le M+N} a_n\,
+e(nx).\]</span></p>
+<p><strong>Theorem (P.X. Gallagher).</strong> If <span
+class="math inline">\(x_1,\ldots,x_R\)</span> are <span
+class="math inline">\(\delta\)</span> well-spaced, then <span
+class="math display">\[\sum_{r=1}^{R} |S(x_r)|^2 \le \,(\pi
+N+\delta^{-1}) \sum_{M&lt;n\le M+N} |a_n|^2 .\]</span></p>
+<p><strong>Lemma (Sobolev–Gallagher).</strong> Let <span
+class="math inline">\(f(x)\)</span> be continuously differentiable on
+<span class="math inline">\([a,b]\)</span> and complex valued. Then
+<span class="math display">\[\bigl|f\!\left(\tfrac{a+b}{2}\right)\bigr|
+\le \frac{1}{b-a}\int_a^b |f(x)|\,dx+\frac12\int_a^b |f&#39;(x)|\,dx
+.\]</span></p>
+<p>In other words, if <span class="math inline">\(f\)</span> is large at
+the center, either it is large on average or its total variation is
+large.</p>
+<p><em>Proof.</em> Let <span class="math inline">\(a\le u\le b\)</span>.
+Then <span class="math display">\[\int_a^u
+\frac{x-a}{b-a}\,f&#39;(x)\,dx
+= \frac{u-a}{b-a} f(u) - \frac{1}{b-a}\int_a^u f(x)\,dx\]</span> and
+<span class="math display">\[-\int_u^b \frac{b-x}{b-a}\,f&#39;(x)\,dx
+= \frac{b-u}{b-a} f(u) - \frac{1}{b-a}\int_u^b f(x)\,dx .\]</span>
+Adding gives <span class="math display">\[f(u)=\int_a^u
+\frac{x-a}{b-a}\,f&#39;(x)\,dx
++\int_u^b \frac{x-b}{b-a}\,f&#39;(x)\,dx
++\frac{1}{b-a}\int_a^b f(x)\,dx ,\]</span> so <span
+class="math display">\[\bigl|f\!\left(\tfrac{a+b}{2}\right)\bigr|
+\le \frac12\int_a^b |f&#39;(x)|\,dx+\frac{1}{b-a}\int_a^b |f(x)|\,dx
+.\]</span> <em>Proof of the theorem.</em> It suffices to prove the
+result for <span class="math display">\[S(x) = \sum_{n=k}^{k} a_n\, e(n
+x)\]</span> with <span class="math inline">\(k=\lfloor M/2
+\rfloor\)</span> (multiply the original <span
+class="math inline">\(S(x)\)</span> by <span
+class="math inline">\(e(-x(M+k+1))\)</span>). By lemma with <span
+class="math inline">\(f(x) = S(x)^2\)</span>, it follows that <span
+class="math display">\[|S(x_r)|^2 \le \frac{1}{\delta} \int_{x_r -
+\frac{\delta}{2}}^{x_r + \frac{\delta}{2}} |S(x)|^2\,dx + \int_{x_r -
+\frac{\delta}{2}}^{x_r + \frac{\delta}{2}} |S(x) S&#39;(x)|\,dx
+.\]</span> So if we take <span class="math inline">\(\{x_r\} = x_r -
+\lfloor x_r \rfloor\)</span>, <span class="math inline">\(|\{x_r\} -
+\{x_s\}| \ge \lVert x_r-x_s\rVert\ge\delta\)</span>, and <span
+class="math display">\[S(x_r) = \sum_{n=k}^{k} a_n\, e(\lfloor x_r
+\rfloor n) \, e(\{x_r\} n)
+= \sum_{n=k}^{k} a_n\, e(\{x_r\} n),\]</span> then, the intervals of
+integration in <span class="math inline">\(\sum_{r=1}^R \int_{x_r -
+\frac{\delta}{2}}^{x_r + \frac{\delta}{2}}\)</span> are not overlapping.
+It gives <span class="math display">\[\begin{aligned}
+\sum_{r=1}^R |S(x_r)|^2
+&amp;\le \frac{1}{\delta} \int_0^1 |S(x)|^2 dx + \int_0^1 |S(x)
+S&#39;(x)| dx\\
+&amp;\le \frac{1}{\delta} \sum_{n=k}^{k&#39;} |a_n|^2 + \left( \int_0^1
+|S(x)|^2 dx \int_0^1 |S&#39;(x)|^2 dx \right)^{1/2}\\
+&amp;\le \frac{1}{\delta} \sum_{n=k}^{k} |a_n|^2
++ \left( \frac{1}{\delta} \sum_{n=k}^{k} |a_n|^2 \cdot 4\pi^2 n^2
+\sum_{n=k}^{k} |a_n|^2 \right)^{1/2}\\
+&amp;\le \left( \frac{1}{\delta} + 2\pi k \right) \sum_{n=k}^{k} |a_n|^2
+.\end{aligned}\]</span></p>
+<p><strong>Theorem (Montgomery and Vaughan).</strong> If <span
+class="math inline">\(x_1,\ldots,x_R\)</span> are <span
+class="math inline">\(\delta\)</span> well-spaced, then <span
+class="math display">\[\sum_{r=1}^R |S(x_r)|^2 \le (N + \delta^{-1} - 1)
+\sum_{n=M+1}^{M+N} |a_n|^2 .\]</span></p>
+<p><em>Proof.</em> It involves the duality of the bilinear form. Let
+<span class="math inline">\(\Delta = \Delta(N,\delta)\)</span>, <span
+class="math display">\[\sum_{r=1}^R |S(x_r)|^2 \le \Delta
+\sum_{n=M+1}^{M+N} |a_n|^2\]</span> is equivalent to <span
+class="math display">\[\sum_{n=M+1}^{M+N} \left| \sum_{r=1}^R y_r\, e(n
+x_r) \right|^2
+\le \Delta \sum_{r=1}^R |y_r|^2 ,\]</span> for all <span
+class="math inline">\(y_r\)</span>. Then, we suppose there is a weight
+function such that <span class="math display">\[\sum_{n=M+1}^{M+N}
+\left| \sum_{r=1}^R y_r e(n x_r) \right|^2
+\le \sum_{n\in\mathbb{Z}} w(n) \left| \sum_{r=1}^R y_r e(n x_r)
+\right|^2\]</span> with <span
+class="math inline">\(\sum_{n\in\mathbb{Z}} w(n) &lt; \infty\)</span>,
+and put <span class="math display">\[W(x) = \sum_{n\in\mathbb{Z}} w(n)
+e(n x).\]</span> Then we expand the right-hand side and get <span
+class="math display">\[= \sum_{r=1}^R \sum_{s=1}^R y_r \overline{y_s}
+\sum_{n\in\mathbb{Z}} w(n) e(n(x_r - x_s))
+= \sum_{r=1}^R \sum_{s=1}^R y_r \overline{y_s} \, W(x_r - x_s).\]</span>
+By a result in harmonic analysis, we could actually construct <span
+class="math inline">\(W(x)=0\)</span> for <span class="math inline">\(1
+\le \|x\| \le \delta\)</span>. Therefore, the above inequality only
+consists of <span class="math inline">\(|y_r|^2\)</span>, and such
+construction yields that <span class="math inline">\(W(0) = N - 1 +
+\delta^{-1}\)</span>, so the proof is complete.</p>
+<p><strong>Farey sequence of order <span
+class="math inline">\(Q\)</span></strong></p>
+<p><span class="math display">\[F_Q = \left\{ \frac{a}{q} : 1 \le a \le
+q, \; 1 \le q \le Q, \; (a,q) = 1 \right\}\]</span> <span
+class="math display">\[\left| \frac{a_1}{q_1} - \frac{a_2}{q_2} \right|
+= \frac{|a_1 q_2 - a_2 q_1|}{q_1 q_2}
+\ge \frac{1}{q_1 q_2} \ge \frac{1}{Q^2}.\]</span> For different <span
+class="math inline">\(a_1, a_2, q_1, q_2\)</span>, then each of the
+points is spaced at least <span class="math inline">\(\delta =
+Q^{-2}\)</span> apart.</p>
+<p><strong>Theorem.</strong> Let <span class="math inline">\(Q, N \ge
+1\)</span>, and let <span class="math inline">\(a_n\)</span> be complex
+numbers. Then <span class="math display">\[\sum_{q \le Q}
+\sum_{\substack{a \,(\mathrm{mod}\, q) \\ (a,q)=1}}
+\left| \sum_{M &lt; n \le M+N} a_n \, e\!\left( \frac{a n}{q} \right)
+\right|^2
+\le (N + Q^2) \sum_{M &lt; n \le M+N} |a_n|^2.\]</span></p>
+<p><strong>Applications I:</strong> In this chapter, we define the sieve
+as follows:</p>
+<ul>
+<li><p><span class="math inline">\(\mathcal{A}\)</span>: a finite set of
+integers</p></li>
+<li><p><span class="math inline">\(\mathcal{P}\)</span>: a finite set of
+primes</p></li>
+<li><p><span class="math inline">\(\Omega_p\)</span>: a set of residues
+(mod <span class="math inline">\(p\)</span>), one set for each <span
+class="math inline">\(p \in \mathcal{P}\)</span></p></li>
+</ul>
+<p><span class="math display">\[S(\mathcal{A}, \mathcal{P}, \Omega_p)
+= \{ n \in \mathcal{A} : n \; (\mathrm{mod} \; p) \notin \Omega_p \ \
+\text{for any} \ \ p \in \mathcal{P} \}\]</span> Let <span
+class="math inline">\(\mathcal{Z} =
+|S(\mathcal{A},\mathcal{P})|\)</span> be the cardinality of the set.</p>
+<p><strong>Theorem (Montgomery’s large sieve).</strong> For the sieve
+<span class="math inline">\(S(\mathcal{A}, \mathcal{P},
+\Omega_p)\)</span> with <span class="math display">\[\mathcal{A} \subset
+(M, M+N], \quad \omega(p) = |\Omega_p|, \quad
+\mathcal{Q} = \{ q \le Q : p \mid q \ \Rightarrow\ p \in \mathcal{P}
+\}\]</span> then <span class="math display">\[\mathcal{Z} \le \frac{N +
+Q^2}{L},\]</span> where <span class="math display">\[L = \sum_{q \in
+\mathcal{Q}} \mu^2(q) \prod_{p \mid q} \frac{\omega(p)}{p -
+\omega(p)}.\]</span></p>
+<p><em>Proof.</em> Let <span class="math display">\[S(\alpha) = \sum_{n
+\in S(\mathcal{A},\mathcal{P},\Omega_p)} a_n \, e(\alpha n)\]</span>
+with <span class="math inline">\(a_n\)</span> complex. It suffices to
+prove that for each <span class="math inline">\(q \in
+\mathcal{Q}\)</span>, <span class="math display">\[|S(0)|^2 \, \mu^2(q)
+\prod_{p \mid q} \frac{\omega(p)}{p - \omega(p)}
+\le \sum_{\substack{a=1 \\ (a,q)=1}}^{q} |S(a/q)|^2.\]</span> Then,
+summing over <span class="math inline">\(q \in \mathcal{Q}\)</span> with
+the large sieve inequality with <span class="math inline">\(a_n =
+1\)</span> for <span class="math inline">\(n \in
+S(\mathcal{A},\mathcal{P},\Omega_p)\)</span> and <span
+class="math inline">\(a_n = 0\)</span> otherwise, we obtain <span
+class="math display">\[\mathcal{Z}^2 L \le (N + Q^2) \mathcal{Z}
+\quad\Rightarrow\quad
+\mathcal{Z} \le \frac{N + Q^2}{L}.\]</span> We prove the above
+inequality by induction over the number of prime factors of <span
+class="math inline">\(q\)</span>. If <span class="math inline">\(q =
+p\)</span>, we have <span class="math display">\[\begin{aligned}
+\sum_{\substack{a=1 \\ (a,p)=1}}^{p} |S(a/p)|^2 &amp;= \sum_{a=1}^{p}
+|S(a/p)|^2 - |S(0)|^2\\
+&amp;=  p\sum_{\substack{{b=1}\\b\notin \Omega_p}}^{p} \left|
+\sum_{\substack{n \in S(\mathcal{A},\mathcal{P},\Omega_p) \\ n \equiv b
+\ (\mathrm{mod}\ p)}} a_n \right|^2 - |S(0)|^2\\
+&amp;\le \frac{p}{p-\omega(p)} |S(0)|^2 - |S(0)|^2\\
+&amp;= \frac{\omega(p)}{p-\omega(p)} |S(0)|^2   \end{aligned}\]</span>
+And if <span class="math inline">\(q = q_1 q_2\)</span> with <span
+class="math inline">\((q_1, q_2) = 1\)</span>, and replace <span
+class="math inline">\(a_n e\!\left( \frac{n a_1}{q_1} \right)\)</span>
+with <span class="math inline">\(a_n\)</span>, and by induction
+hypothesis for <span class="math inline">\(q_1 = q\)</span>, we obtain
+<span class="math display">\[\sum_{\substack{a=1 \\ (a,q)=1}}^{q} \left|
+S\!\left( \frac{a}{q} \right) \right|^2
+= \sum_{\substack{a_1=1 \\ (a_1,q_1)=1}}^{q_1}
+\left( \sum_{\substack{a_2=1 \\ (a_2,q_2)=1}}^{q_2}
+\left| \sum_{n \in S(\mathcal{A},\mathcal{P},\Omega_p)} a_n e\!\left(
+\frac{n a_1}{q_1} \right) e\!\left( \frac{n a_2}{q_2} \right) \right|^2
+\right)\]</span> <span class="math display">\[\ge |S(0)|^2 \, \mu^2(q)
+\prod_{p \mid q} \frac{\omega(p)}{p - \omega(p)}.\]</span></p>
+<p><strong>Application II:</strong></p>
+<p><em>Corollary.</em> Let <span class="math inline">\(\chi\)</span> be
+a character <span class="math inline">\((\mathrm{mod}\ q)\)</span> and
+put <span class="math inline">\(T(\chi) = \sum_{n=M+1}^{M+N} a_n
+\chi(n)\)</span>. Then for any <span class="math inline">\(Q \ge
+1\)</span>, <span class="math display">\[\sum_{q \le Q}
+\frac{q}{\varphi(q)} \sum_{\chi}{}^{*} |T(\chi)|^2 \le (N + Q^2)
+\sum_{n=M+1}^{M+N} |a_n|^2\]</span> Here <span
+class="math inline">\(\sum_{\chi}^{*}\)</span> denotes the sum over all
+primitive characters <span class="math inline">\(\chi \ (\mathrm{mod}\
+q)\)</span>. It suffices to show that <span
+class="math display">\[\sum_{\chi}{}^{*} |T(\chi)|^2 \le
+\frac{\varphi(q)}{q} \sum_{\substack{a=1 \\ (a,q)=1}}^{q} \left|
+\sum_{n=M+1}^{M+N} a_n e\!\left( \frac{n a}{q} \right)
+\right|^2.\]</span> Note if <span class="math inline">\(\chi\)</span> is
+primitive <span class="math inline">\((\mathrm{mod}\ q)\)</span>, then
+<span class="math display">\[\chi(n) = \frac{1}{\tau(\overline{\chi})}
+\sum_{a=1}^{q} \overline{\chi}(a) e\!\left( \frac{n a}{q}
+\right)\]</span> for all <span class="math inline">\(n\)</span>.
+Multiplying both sides by <span class="math inline">\(a_n\)</span> and
+summing <span class="math inline">\(n\)</span> from <span
+class="math inline">\(M+1\)</span> to <span
+class="math inline">\(M+N\)</span>, we get <span
+class="math display">\[T(\chi) = \frac{1}{\tau(\overline{\chi})}
+\sum_{a=1}^{q} \overline{\chi}(a) S(a/q)\]</span> As <span
+class="math inline">\(|\tau(\chi)| = \sqrt{q}\)</span> for <span
+class="math inline">\(\chi\)</span> primitive, we find that <span
+class="math display">\[\begin{aligned}
+\sum_{\chi}{}^{*} |T(\chi)|^2 &amp;= \frac{1}{q} \sum_{\chi}{}^{*}
+\left| \sum_{a=1}^{q} \overline{\chi}(a) S(a/q) \right|^2\\
+&amp;\le \frac{1}{q} \sum_{\chi} \left| \sum_{a=1}^{q}
+\overline{\chi}(a) S(a/q) \right|^2,\end{aligned}\]</span></p>
+<p>where <span class="math display">\[\begin{aligned}
+\sum_{\chi} \left| \sum_{a=1}^{q} \overline{\chi}(a) S(a/q) \right|^2
+&amp;= \sum_{a=1}^{q} \sum_{b=1}^{q} S(a/q) \overline{S(b/q)}
+\sum_{\chi} \overline{\chi}(a) \chi(b)\\
+&amp;= \varphi(q) \sum_{\substack{a=1 \\ (a,q)=1}}^{q}
+|S(a/q)|^2\end{aligned}\]</span></p>
+<p>Thus, the proof is complete.</p>
+</body>
+</html>
